@@ -1,0 +1,20 @@
+all : lineas_1.txt lineas_2.txt
+# no se crea el archivo all
+
+lineas_1.txt : numeros.txt lineas.py
+	   python lineas.py
+
+lineas_2.txt : numeros.txt lineas.py
+	   python lineas.py
+
+numeros.x : numeros.c
+	  cc numeros.c -o numeros.x
+
+numeros.txt : numeros.x
+	    ./numeros.x > numeros.txt
+
+clean:
+	rm -f numeros.x lineas_*.txt numeros.txt lineas.txt
+
+#edit:
+#	emacs numeros.c &
